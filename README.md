@@ -6,15 +6,31 @@
 <p>Even I don't know much about blockchain technology or how it works at all, I've decided to create my own blockchain with consensus algorithm Proof-of-Stake (PoS). I've lately been working with Solidity and been learning about smart-contract development, and during I found it quite fun and interesting. That is why this has and is a very fun project to work on, and even though it might not be classed as a blockchain I've learned a lot during research and improved my Python skills a lot!</p>
 <h3>How does Trilio work</h3>
 <p>Trilio is a fast single-threaded PoS aimed blockchain that is built upon using classes to store memory variables and detailed architecturesw/models.
-It has plenty of features or something that I would call integrated smart-contracts, which include:</p>
-<ul>
-<li>Token transfers.</li>
-<li>Asset trading.</li>
-<li>Asset minting.</li>
-<li>Collection creation.</li>
-</ul>
+It has plenty of features but I'd rather call them integrated smart-contracts/smart-contract actions, which include:</p>
+
+`Token transfers`
+`Asset trading`
+`Asset minting`
+`Collection creation`
 
 <h3>How to use Trilio</h3>
+make like:
+```python
+block = {
+    'index': 1,
+    'timestamp': 1506092455,
+    'transactions': [
+        {
+            'sender': "852714982as982341a4b27ee00",
+            'recipient': "a77f5cdfa2934hv25c7c7da5df1f",
+            'amount': 5,
+        }
+    ],
+    'proof': 323454734020,
+    'previous_hash': "2cf24dba5fb0a3202h2025c25e7304249898"
+}
+```
+
 <p>As soon as Trilio is finished I will upload it to PyPi and add some documentation here.</p>
 
 <h3>Contact me</h3>
