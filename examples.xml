@@ -1,0 +1,20 @@
+[
+    {
+        "type" : "token-transfer",
+        "data" : {
+            "to" : "<to_public_key>",
+            "from" : "<from_private_key>",
+            "amount": "<amount_number>"
+        }
+    }
+    ,
+    // WORKING ON NFT(s)
+    {
+        "type" : "nft-transfer",
+        "data" : {
+            "to" : "<to_public_key>",
+            "from" : "<from_private_key>",
+            "asset_id": "<asset_id_number>"
+        }
+    }
+]
