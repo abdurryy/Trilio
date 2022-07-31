@@ -14,24 +14,14 @@ It has plenty of features but I'd rather call them integrated smart-contracts/sm
 `Collection creation`
 
 <h3>How to use Trilio</h3>
-make like:
-```python
-block = {
-    'index': 1,
-    'timestamp': 1506092455,
-    'transactions': [
-        {
-            'sender': "852714982as982341a4b27ee00",
-            'recipient': "a77f5cdfa2934hv25c7c7da5df1f",
-            'amount': 5,
-        }
-    ],
-    'proof': 323454734020,
-    'previous_hash': "2cf24dba5fb0a3202h2025c25e7304249898"
-}
-```
+<p>We start of with downloading the "architectures" folder</p>
 
-<p>As soon as Trilio is finished I will upload it to PyPi and add some documentation here.</p>
+```python
+from trilio import Trilio
+
+_bl = Trilio() # our _bl variable stands for blockchain
+_ad = 
+```
 
 <h3>Contact me</h3>
 Discord: LocalMOD#3782
