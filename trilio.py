@@ -1,9 +1,10 @@
-from numpy import block
 from architectures.blockchain import Blockchain
 from architectures.block import Block
 from architectures.address import Address
 from architectures.transaction import Transaction
+from architectures.nft import Collection, Trade, Asset
 from datetime import datetime
+import time
 
 class Trilio:
     def __init__(self):
@@ -15,28 +16,35 @@ class Trilio:
         # Create genisis
         self.trilio.chain.append(Block(datetime.now().timestamp(), ["genisis block"]))
     
-    def create_block(self,addresses):
-        nonce = self.trilio.difficulty ** 14
+    def create_block(self,addresses=None, collections=None, assets=None, trades=None):
+        nonce = self.trilio.difficulty ** 12
 
         for i in range(nonce):
             pass
 
         if len(self.trilio.pending_transactions) >= self.trilio.minimum_transactions:
             # block.hash, block.timestamp, block.transactions, block.previous_hash
-            transactions = []
-            for i in range(self.trilio.minimum_transactions):
-                transactions.append(self.trilio.pending_transactions[i])
-            block = Block(datetime.now().timestamp(), transactions, self.trilio.chain[len(self.trilio.chain)-1].hash, addresses)
+            transactions = self.trilio.pending_transactions
+            self.trilio.pending_transactions = []
+            
+            block = Block(datetime.now().timestamp(), transactions, self.trilio.chain[len(self.trilio.chain)-1].hash, addresses, collections, assets, trades)
             self.trilio.chain.append(block)
             return block
         else:
             return False
+        
 
         
     
     def create_transaction(self, timestamp, data):
         self.trilio.pending_transactions.append(
             Transaction(timestamp,data=data)
+        )
+        self.create_block(
+            addresses=_ad,
+            collections=_co,
+            trades=_tr,
+            assets=_as
         )
     
     def get_transaction(self, data):
@@ -45,23 +53,77 @@ class Trilio:
                 if transaction.hash == data:
                     return transaction
 
-blockchain = Trilio()
-address = Address()
+_bl = Trilio()
+_ad = Address()
+_tr = Trade()
+_co = Collection()
+_as = Asset()
 
-my_credientials = address.create_address()["address"]
-their_credientials = address.create_address()["address"]
 
-blockchain.create_transaction(datetime.now().timestamp(),
-    {
+test = _ad.create_address()["address"]
+test1 = _ad.create_address()["address"]
+
+_bl.create_transaction(
+    datetime.now().timestamp(),
+    data = {
+        "type" : "contract-action",
+        "action" : "collection-creation",
+        "data" : {
+            "signer" : test1["pve"],
+            "name" : "abdurry",
+            "description" : "hello",
+            "url" : "",
+            "icon" : "",
+            "tags" : ["levitate", "wavy", "splach", "smash"]
+        }
+    }
+)
+
+_bl.create_transaction(
+    datetime.now().timestamp(),
+    data = {
+        "type" : "contract-action",
+        "action" : "asset-creation",
+        "data" : {
+            "signer" : test1["pve"],
+            "name" : "abdurry",
+            "description" : "hello",
+            "collection_id" : 1
+        }
+    }
+)
+
+_bl.create_transaction(
+    datetime.now().timestamp(),
+    data = {
         "type" : "token-transfer",
         "data" : {
-            "to" : their_credientials["pbc"],
-            "from" : my_credientials["pve"],
+            "to" : test["pbc"],
+            "from" : test1["pve"],
             "amount": 50
         }
     }
 )
 
+print(_ad.get_balance(test1["pve"], test1["pbc"]))
+print(_ad.get_collections(test1["pve"], test1["pbc"]))
+print(_ad.get_assets(test1["pve"], test1["pbc"]))
 
-block = blockchain.create_block(address)
-print(address.get_balance(their_credientials["pve"], their_credientials["pbc"]))
+
+
+"""
+bl.create_transaction(
+    datetime.now().timestamp(),
+    data = {
+        "type" : "asset-transfer",
+        "data" : {
+            "_to" : test["pbc"],
+            "_from" : test1["pve"],
+            "tassets" : [],
+            "fassets" : [10]
+        }
+    }
+)
+"""
+# trade.send_trade(datetime.now().timestamp(), test["pbc"], test1["pve"], [10], [])
+

@@ -10,11 +10,12 @@
     ,
     // WORKING ON NFT(s)
     {
-        "type" : "nft-transfer",
+        "type" : "asset-transfer",
         "data" : {
-            "to" : "<to_public_key>",
-            "from" : "<from_private_key>",
-            "asset_id": "<asset_id_number>"
+            "_to" : "<to_public_key>",
+            "_from" : "<from_private_key>",
+            "tassets": "[<asset_ids_number>]",
+            "fassets": "[<asset_ids_number>]"
         }
     }
 ]

@@ -1,7 +1,5 @@
 import hashlib, random
 
-from torch import addr
-
 class Address:
     def __init__(self):
         self.addresses = []
@@ -17,7 +15,9 @@ class Address:
                 "pbc":public_key 
             }, 
             "info": {
-                "balance":float(100) 
+                "balance":float(100),
+                "assets" : [],
+                "collections" : []
             }
         }
         if self.validate_address(private_key, public_key) == False:
@@ -34,6 +34,24 @@ class Address:
         for address in self.addresses:
             if address["address"]["pbc"] == public_key and address["address"]["pve"] == private_key:
                 return float(address["info"]["balance"])
+        
+    def get_assets(self, private_key=None, public_key=None):
+        r = self.require(private_key, public_key)
+        if r == False:
+            return "Private and Public keys are required"
+            
+        for address in self.addresses:
+            if address["address"]["pbc"] == public_key and address["address"]["pve"] == private_key:
+                return address["info"]["assets"]
+    
+    def get_collections(self, private_key=None, public_key=None):
+        r = self.require(private_key, public_key)
+        if r == False:
+            return "Private and Public keys are required"
+            
+        for address in self.addresses:
+            if address["address"]["pbc"] == public_key and address["address"]["pve"] == private_key:
+                return address["info"]["collections"]
     
     def get_public_key(self, private_key=None):
         if private_key == None:
