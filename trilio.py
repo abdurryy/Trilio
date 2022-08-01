@@ -4,7 +4,6 @@ from architectures.address import Address
 from architectures.transaction import Transaction
 from architectures.nft import Collection, Trade, Asset
 from datetime import datetime
-import time
 
 class Trilio:
     def __init__(self):
