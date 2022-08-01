@@ -13,13 +13,17 @@ It has plenty of features but I'd rather call them integrated smart-contracts/sm
 `Asset minting`
 `Collection creation`
 
-<h3>Install Trilio</h3>
-```python
-pip install trilio==0.1.2
+<h3>Install Trilio with 3 steps</h3>
+```
+$pip install trilio==0.1.2
+$pip install datetime
+$pip install hashlib
 ```
 
+<h3>Create your first wallet</h3>
+
 ```python
-from trilio import Trilio, Address
+from trilio import Trilio
 
 # make your own blockchain
 myBlockchain = Trilio()
