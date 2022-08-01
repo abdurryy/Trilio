@@ -33,23 +33,9 @@ class Collection:
                     return True
         return False
 
-class Asset:
+class AssetStorage:
     def __init__(self):
         self.assets = []
-    
-    def create_asset(self, timestamp, public_key, collection_id, name, description, _ad=None):
-        self.id = len(self.assets) + 1
-        self.name = name
-        self.description = description
-        self.collection_id = collection_id
-        self.created_at = timestamp
-        self.owner = public_key
-        self.trading = False
-        self.selling = False
-        self.assets.append(self)
-        for address in _ad.addresses:
-            if address["address"]["pbc"] == public_key:
-                address["info"]["assets"].append(self.id)
 
 
 class Trade:
@@ -65,6 +51,42 @@ class Trade:
         self.state = 0 # 0 = pending # 1 = accepted # 2 = decline
         self.created_at = timestamp
         self.trades.append(self)
+    
+    def accept_trade(self, id, private_key, address, assets, _ad):
+        
+        for trade in self.trades:
+            if trade.id == id:
+                if trade.state == 2 or trade.state == 1:
+                    return # This trade has already been interacted with
+                if trade._to == address.get_public_key(private_key):
+                    tassets = 0
+                    for asset_id in trade.tassets:
+                        for asset in assets.assets:
+                            if asset.id == asset_id and asset.owner == trade._to:
+                                tassets += 1
+                    if tassets == len(trade.tassets):
+                        for asset_id in trade.tassets:
+                            assets.assets[asset_id-1].owner = address.get_public_key(trade._from)
+                            for address in address.addresses:
+                                if address["address"]["pve"] == trade._from:
+                                    address["info"]["assets"].append(asset_id)
+                            for address in _ad.addresses:
+                                if address["address"]["pbc"] == trade._to:
+                                    address["info"]["assets"].pop(address["info"]["assets"].index(asset_id))
+
+                                    
+
+                        for asset_id in trade.fassets:
+                            assets.assets[asset_id-1].owner = trade._to
+                            for address in _ad.addresses:
+                                if address["address"]["pbc"] == trade._to:
+                                    address["info"]["assets"].append(asset_id)
+                                
+                                
+
+                        trade.state = 1
+                else:
+                    print("worng address")
 
 
     
