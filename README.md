@@ -15,9 +15,9 @@ It has plenty of features but I'd rather call them integrated smart-contracts/sm
 
 <h3>Install Trilio with 3 steps</h3>
 ```
-$pip install trilio==0.1.2
-$pip install datetime
-$pip install hashlib
+$ pip install trilio==0.1.2
+$ pip install datetime
+$ pip install hashlib
 ```
 
 <h3>Create your first wallet</h3>
