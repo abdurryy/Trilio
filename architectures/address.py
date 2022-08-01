@@ -1,5 +1,6 @@
 import hashlib, random
 
+# Addresses
 class Address:
     def __init__(self):
         self.addresses = []

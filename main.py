@@ -1,6 +1,4 @@
 # Haven't been focusin on this one
-
-
 from flask import Flask, jsonify, request
 from datetime import datetime
 
@@ -52,7 +50,5 @@ def create_transaction():
             "err":str(err)
         }
         return jsonify(response)
-
-
 
 app.run("localhost", port=5000, debug=True)

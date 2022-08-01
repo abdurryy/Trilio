@@ -1,3 +1,4 @@
+# Transactions
 import hashlib
 
 class Transaction:

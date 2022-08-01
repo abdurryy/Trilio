@@ -18,4 +18,3 @@ It has plenty of features but I'd rather call them integrated smart-contracts/sm
 
 <h3>Contact me</h3>
 Discord: LocalMOD#3782
-

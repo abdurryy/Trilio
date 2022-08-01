@@ -2,7 +2,7 @@ from architectures.blockchain import Blockchain
 from architectures.block import Block
 from architectures.address import Address
 from architectures.transaction import Transaction
-from architectures.nft import Collection, AssetStorage, TradeStorage
+from architectures.nft import CollectionStorage, AssetStorage, TradeStorage
 from datetime import datetime
 
 class Trilio:
@@ -14,6 +14,10 @@ class Trilio:
         )
         # Create genisis
         self.trilio.chain.append(Block(datetime.now().timestamp(), ["genisis block"]))
+        self.Address = Address()
+        self.TradeStorage = TradeStorage()
+        self.CollectionStorage = CollectionStorage()
+        self.AssetStorage = AssetStorage()
     
     def create_block(self,addresses=None, collections=None, assets=None, trades=None):
         nonce = self.trilio.difficulty ** 12
@@ -40,10 +44,10 @@ class Trilio:
             Transaction(timestamp,data=data)
         )
         self.create_block(
-            addresses=_ad,
-            collections=_co,
-            trades=_tr,
-            assets=_as
+            addresses=self.Address,
+            collections=self.CollectionStorage,
+            trades=self.TradeStorage,
+            assets=self.AssetStorage
         )
     
 
@@ -52,132 +56,15 @@ class Trilio:
             for transaction in block.transactions:
                 if transaction.hash == data:
                     return transaction
+    
+    class Address(Address):
+        pass
 
-_bl = Trilio()
-_ad = Address()
-_tr = TradeStorage()
-_co = Collection()
-_as = AssetStorage()
+    class TradeStorage(TradeStorage):
+        pass
 
+    class CollectionStorage(CollectionStorage):
+        pass
 
-test = _ad.create_address()["address"]
-test1 = _ad.create_address()["address"]
-
-_bl.create_transaction(
-    datetime.now().timestamp(),
-    data = {
-        "type" : "contract-action",
-        "action" : "collection-creation",
-        "data" : {
-            "signer" : test1["pve"],
-            "name" : "abdurry",
-            "description" : "hello",
-            "url" : "",
-            "icon" : "",
-            "tags" : ["levitate", "wavy", "splach", "smash"]
-        }
-    }
-)
-
-
-_bl.create_transaction(
-    datetime.now().timestamp(),
-    data = {
-        "type" : "contract-action",
-        "action" : "asset-creation",
-        "data" : {
-            "signer" : test1["pve"],
-            "name" : "imbett",
-            "description" : "hello",
-            "collection_id" : 1
-        }
-    }
-)
-
-
-_bl.create_transaction(
-    datetime.now().timestamp(),
-    data = {
-        "type" : "contract-action",
-        "action" : "collection-creation",
-        "data" : {
-            "signer" : test["pve"],
-            "name" : "imbetterr",
-            "description" : "hello",
-            "url" : "",
-            "icon" : "",
-            "tags" : ["levitate", "wavy", "splach", "smash"]
-        }
-    }
-)
-
-_bl.create_transaction(
-    datetime.now().timestamp(),
-    data = {
-        "type" : "contract-action",
-        "action" : "asset-creation",
-        "data" : {
-            "signer" : test["pve"],
-            "name" : "imbet",
-            "description" : "hello",
-            "collection_id" : 2
-        }
-    }
-)
-
-_bl.create_transaction(
-    datetime.now().timestamp(),
-    data = {
-        "type" : "token-transfer",
-        "data" : {
-            "to" : test["pbc"],
-            "from" : test1["pve"],
-            "amount": 50
-        }
-    }
-)
-
-print(_ad.get_assets(test["pve"],test["pbc"]))
-print(_ad.get_assets(test1["pve"],test1["pbc"]))
-
-# before trade
-print(_as.assets[0].owner)
-_bl.create_transaction(
-    datetime.now().timestamp(),
-    data = {
-        "type" : "asset-transfer",
-        "data" : {
-            "_to" : test["pbc"],
-            "_from" : test1["pve"],
-            "tassets" : [],
-            "fassets" : [1]
-        }
-    }
-)
-
-
-# under trade
-print(_as.assets[0].owner)
-
-
-_bl.create_transaction(
-    datetime.now().timestamp(),
-    data = {
-        "type" : "contract-action",
-        "action" : "decline-trade",
-        "data" : {
-            "signer" : test["pve"],
-            "id" : 1
-        }
-    }
-)
-
-
-#after trade
-print(_as.assets[0].owner)
-
-print(_ad.get_assets(test["pve"],test["pbc"]))
-print(_ad.get_assets(test1["pve"],test1["pbc"]))
-
-# trade.send_trade(datetime.now().timestamp(), test["pbc"], test1["pve"], [10], [])
-
+    class AssetStorage(AssetStorage):
+        pass
