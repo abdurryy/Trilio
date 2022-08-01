@@ -13,8 +13,29 @@ It has plenty of features but I'd rather call them integrated smart-contracts/sm
 `Asset minting`
 `Collection creation`
 
-<h3>How to use Trilio</h3>
-<p>Coming soon..</p>
+<h3>Install Trilio</h3>
+```python
+pip install trilio==0.1.2
+```
+
+```python
+from trilio import Trilio, Address
+
+# make your own blockchain
+myBlockchain = Trilio()
+
+# create your own wallet
+myWallet = myBlockchain.Address.create_address()
+
+# wallet
+myWalletAddress = myWallet["address"]
+
+# wallet keys
+myPrivateKey = myWalletAddress["pve"] # pve = private
+myPublicKey = myWalletAddress["pbc"] # pbc = public
+
+print(myPublicKey, myPrivateKey)
+```
 
 <h3>Contact me</h3>
 Discord: LocalMOD#3782
