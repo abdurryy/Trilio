@@ -14,6 +14,7 @@ It has plenty of features but I'd rather call them integrated smart-contracts/sm
 `Collection creation`
 
 <h3>Install Trilio with 3 steps</h3>
+
 ```
 $ pip install trilio==0.1.2
 $ pip install datetime
