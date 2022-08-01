@@ -8,13 +8,13 @@
 <h3>Benifits of Trilio</h3>
 <ul>
 <li>Ultra fast transactions.</li>
-<li>Simple to understand.</li>
-<li>Easy to use.</li>
+<li>Simple to understand and use.</li>
+<li>Integrated smart-contract.</li>
 </ul>
 
 <h3>Requirements</h3>
 <ul>
-<li>Trilio requires <a href="https://www.python.org/downloads/">Python v3.4+</a></li>
+<li>Trilio requires <a target="__blank" href="https://www.python.org/downloads/">Python v3.4+</a></li>
 </ul>
 
 
@@ -34,7 +34,7 @@ $ pip install datetime
 $ pip install hashlib
 ```
 
-<h3>Create your first valid blockchain</h3>
+<h3>Validate your own blockchain</h3>
 
 Here is a simple way to create your own blockchain with Trilio and check if the chain is valid, with that we mean whether or not the chain has been compromised. This will return a boolean value such as `True` or `False`, where `True` corresponds to validity.
 
@@ -47,7 +47,7 @@ from trilio import Trilio
 myBlockchain = Trilio()
 
 # check if chain is valid
-IsChainValid = myBlockchain.validate_chain()
+IsChainValid = myBlockchain.trilio.validate_chain()
 
 print("Is my chain valid", IsChainValid)
 ```
@@ -73,5 +73,20 @@ myPublicKey = myWalletAddress["pbc"] # pbc = public
 print(myPublicKey, myPrivateKey)
 ```
 
-<h3>Contact me</h3>
+<h3>Trilio's blockchain attributes</h3>
+<p>These blockchain attributes are already set, but you can change them to whatever you desire.</p>
+
+`
+myBlockchain.trilio.difficulity = 5
+` # change the mining complexity
+
+`
+myBlockchain.trilio.name = "MyBlochainName"
+` # change the name of your blockchain
+
+`
+myBlockchain.trilio.minimum_transactions = 1
+` # minimum transactions for each block
+
+<h1>Contact me</h1>
 Discord: LocalMOD#3782
