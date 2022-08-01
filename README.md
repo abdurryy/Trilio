@@ -47,9 +47,9 @@ from trilio import Trilio
 myBlockchain = Trilio()
 
 # check if chain is valid
-is_chain_valid = myBlockchain.validate_chain()
+IsChainValid = myBlockchain.validate_chain()
 
-print("Is my chain valid", is_chain_valid)
+print("Is my chain valid", IsChainValid)
 ```
 
 <h3>Create your first wallet</h3>
