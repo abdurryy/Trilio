@@ -2,7 +2,7 @@ from architectures.blockchain import Blockchain
 from architectures.block import Block
 from architectures.address import Address
 from architectures.transaction import Transaction
-from architectures.nft import Collection, Trade, AssetStorage
+from architectures.nft import Collection, AssetStorage, TradeStorage
 from datetime import datetime
 
 class Trilio:
@@ -55,7 +55,7 @@ class Trilio:
 
 _bl = Trilio()
 _ad = Address()
-_tr = Trade()
+_tr = TradeStorage()
 _co = Collection()
 _as = AssetStorage()
 
@@ -164,13 +164,14 @@ _bl.create_transaction(
     datetime.now().timestamp(),
     data = {
         "type" : "contract-action",
-        "action" : "accept-trade",
+        "action" : "decline-trade",
         "data" : {
             "signer" : test["pve"],
             "id" : 1
         }
     }
 )
+
 
 #after trade
 print(_as.assets[0].owner)

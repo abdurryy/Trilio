@@ -38,55 +38,9 @@ class AssetStorage:
         self.assets = []
 
 
-class Trade:
+class TradeStorage:
     def __init__(self):
         self.trades = []
-    
-    def send_trade(self, timestamp, _to, _from, fassets, tassets):
-        self.id = len(self.trades) + 1
-        self._to = _to
-        self._from = _from
-        self.fassets = fassets
-        self.tassets = tassets
-        self.state = 0 # 0 = pending # 1 = accepted # 2 = decline
-        self.created_at = timestamp
-        self.trades.append(self)
-    
-    def accept_trade(self, id, private_key, address, assets, _ad):
-        
-        for trade in self.trades:
-            if trade.id == id:
-                if trade.state == 2 or trade.state == 1:
-                    return # This trade has already been interacted with
-                if trade._to == address.get_public_key(private_key):
-                    tassets = 0
-                    for asset_id in trade.tassets:
-                        for asset in assets.assets:
-                            if asset.id == asset_id and asset.owner == trade._to:
-                                tassets += 1
-                    if tassets == len(trade.tassets):
-                        for asset_id in trade.tassets:
-                            assets.assets[asset_id-1].owner = address.get_public_key(trade._from)
-                            for address in address.addresses:
-                                if address["address"]["pve"] == trade._from:
-                                    address["info"]["assets"].append(asset_id)
-                            for address in _ad.addresses:
-                                if address["address"]["pbc"] == trade._to:
-                                    address["info"]["assets"].pop(address["info"]["assets"].index(asset_id))
-
-                                    
-
-                        for asset_id in trade.fassets:
-                            assets.assets[asset_id-1].owner = trade._to
-                            for address in _ad.addresses:
-                                if address["address"]["pbc"] == trade._to:
-                                    address["info"]["assets"].append(asset_id)
-                                
-                                
-
-                        trade.state = 1
-                else:
-                    print("worng address")
 
 
     
