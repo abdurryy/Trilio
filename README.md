@@ -126,8 +126,8 @@ blockchain.create_transaction(
     data = {
         "type":"token-transfer",
         "data":{
-            "to":<public_key>,
-            "from":<private_key>,
+            "to":<public_key (Wallet recieving)>,
+            "from":<private_key (Wallet sending)>,
             "amount":<amount>
         }
     }
@@ -141,7 +141,7 @@ blockchain.create_transaction(
 blockchain.create_transaction(
     datetime.now(),
     data = {
-        "type":"contract-actions",
+        "type":"contract-action",
         "action":"collection-creation",
         "data":{
             "name":<collection_name>,
@@ -153,6 +153,8 @@ blockchain.create_transaction(
         }
     }
 )
+
+#print(blockchain.Wallet.get_collections(private_key=<private_key>, public_key=<public_key>))
 ```
 
 <h1>Contact me</h1>
