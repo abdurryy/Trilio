@@ -25,7 +25,7 @@
 In order to make the installation much faster and simpler, I've uploaded this project to PyPi and you can simply install it using the  `pip`  command below.
 
 ```
-$ pip install trilio==0.1.6
+$ pip install trilio==0.1.9
 ```
 
 You might also need to pip install these libraries, too.
