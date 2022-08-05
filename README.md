@@ -28,7 +28,15 @@
     - [Trilio's blockchain attributes](#Trilios-blockchain-attributes)
   - [Wallet](#wallet)
     - [Example Using a Wallet](#example-using-a-wallet-recommended)
-
+    - [Create a Wallet](#create-a-wallet)
+    - [Get wallet Keys](#get-wallet-keys)
+    - [Convert wallet Key](#convert-wallet-key)
+    - [Credit a Wallet](#credit-a-wallet)
+    - [Validate a Wallet](#validate-a-wallet)
+  - [Transactions](#transactions)
+    - [Send tokens to Wallet](#send-tokens-to-wallet)
+    - [Create your Collection](#create-your-collection)
+- [Contact Me](#contact-me)
 - [License](#license)
 
 
@@ -131,7 +139,7 @@ blockchain.Wallet.validate_wallet(private_key=<private_key>, public_key=<public_
 ```
 
 
-<h2>## Transactions</h2>
+<h2>Transactions</h2>
 <h3>Send tokens to Wallet</h3>
 
 ```python
@@ -173,3 +181,6 @@ blockchain.create_transaction(
 
 <h1>Contact me</h1>
 Discord: LocalMOD#3782
+
+<h1>License</h1>
+<p>Check out Trilio's <a href="https://github.com/abdurryy/Trilio/blob/master/LICENSE.txt">license</a>.</p>
