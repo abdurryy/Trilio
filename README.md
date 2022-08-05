@@ -18,14 +18,13 @@
 
 <h1>Usage</h1>
 
-- [API Reference](#api-reference)
-- [Getting Started](#getting-started)
+- [Getting Started with Trilio](#getting-started-with-Trilio)
   - [Requirements](#requirements)
   - [Installation](#installation)
 - [Usage Examples](#usage-examples)
   - [Blockhain](#blockchain)
-    - [Async Usage](#async-usage)
-  - [Building and Signing Transactions](#building-and-signing-transactions)
+    - [Make your own Blockchain](#make-your-own-blockchain)
+  - [Wallet](#wallet)
     - [Example Using a Wallet](#example-using-a-wallet-recommended)
 
 - [License](#license)
@@ -46,7 +45,7 @@ You might also need to pip install these libraries, too.
 $ pip install datetime
 $ pip install hashlib
 ```
-<h1>Documentation</h1>
+<h1>Usage Examples</h1>
 <p>I guarantee you that if you try to understand you will understand. The code examples should <br>explain themselves.</p>
 <h2>Blockchain</h2>
 <h3>Make your own Blockchain</h3>
@@ -81,7 +80,7 @@ blockchain.trilio.name = "MyBlochainName"
 blockchain.trilio.minimum_transactions = 1
 ` # minimum transactions for each block
 
-<h2>## Wallet</h2>
+<h2>Wallet</h2>
 <h3>Create a Wallet</h3>
 
 ```python
