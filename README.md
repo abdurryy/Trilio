@@ -11,11 +11,24 @@
 <li>Simple to understand and use.</li>
 <li>Integrated smart-contract.</li>
 </ul>
-
 <h3>Requirements</h3>
 <ul>
 <li>Trilio requires <a target="__blank" href="https://www.python.org/downloads/">Python v3.4+</a></li>
 </ul>
+
+<h1>Usage</h1>
+
+- [API Reference](#api-reference)
+- [Getting Started](#getting-started)
+  - [Requirements](#requirements)
+  - [Installation](#installation)
+- [Usage Examples](#usage-examples)
+  - [Blockhain](Blockchain)
+    - [Async Usage](#async-usage)
+  - [Building and Signing Transactions](#building-and-signing-transactions)
+    - [Example Using a Wallet](#example-using-a-wallet-recommended)
+
+- [License](#license)
 
 
 <h1>Get started with Trilio</h1>
@@ -35,7 +48,7 @@ $ pip install hashlib
 ```
 <h1>Documentation</h1>
 <p>I guarantee you that if you try to understand you will understand. The code examples should <br>explain themselves.</p>
-<h2>## Blockchain</h2>
+<h2>Blockchain</h2>
 <h3>Make your own Blockchain</h3>
 
 ```python
