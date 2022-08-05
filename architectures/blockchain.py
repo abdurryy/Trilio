@@ -12,15 +12,4 @@ class Blockchain:
 
         ]
 
-    def validate_chain(self):
-        for i in range(len(self.chain)):
-            if self.chain[i].transactions[0] != "genisis block":
-                if self.chain[i].get_hash() != self.chain[i].hash:
-                    return False
-                
-                if self.chain[i].previous_hash != self.chain[i-1].hash:
-                    return False
-        
-        return True
-
 

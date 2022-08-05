@@ -143,9 +143,11 @@ class Block:
             
             if transaction.input["type"] == "token-transfer":
                 if float(transaction.input["data"]["amount"]) >= 0:
+                    if transaction.input["data"]["to"] == pbc:
+                        return
                     if self.addresses.get_balance(pve, pbc) >= float(transaction.input["data"]["amount"]):
-                        self.addresses.credit_address(transaction.input["data"]["to"], float(transaction.input["data"]["amount"]))
-                        self.addresses.credit_address(pbc, -float(transaction.input["data"]["amount"]))
+                        self.addresses.credit_wallet(transaction.input["data"]["to"], float(transaction.input["data"]["amount"]))
+                        self.addresses.credit_wallet(pbc, -float(transaction.input["data"]["amount"]))
             elif transaction.input["type"] == "contract-action":
                 # if collection name is valid continue
                 # create collection
@@ -168,6 +170,8 @@ class Block:
             elif transaction.input["type"] == "asset-transfer":
                 # check if the user owns the assets
                 # check if the other user owns the assets
+                if transaction.input["data"]["_to"] == self.addresses.get_public_key(transaction.input["data"]["_from"]):
+                        return
                 fassets = 0
                 tassets = 0
                 for asset_id in transaction.input["data"]["fassets"]: # this is what they sending
@@ -179,11 +183,11 @@ class Block:
                     for asset in self.assets.assets:
                         if asset.id == asset_id and asset.owner == transaction.input["data"]["_to"]:
                             tassets += 1
+                
 
                 if fassets == len(transaction.input["data"]["fassets"]):
                     if tassets == len(transaction.input["data"]["tassets"]):
                         for asset_id in transaction.input["data"]["fassets"]:
-                            #need a fix
                             for asset in self.assets.assets:
                                 if asset.id == asset_id:
                                     pbc = self.addresses.get_public_key(transaction.input["data"]["_from"])

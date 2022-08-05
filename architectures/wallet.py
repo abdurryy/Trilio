@@ -1,11 +1,11 @@
 import hashlib, random
 
 # Addresses
-class Address:
+class Wallet:
     def __init__(self):
         self.addresses = []
     
-    def create_address(self):
+    def create_wallet(self):
         pve = random.randint(100000000000,99999999999999)
         pbc = random.randint(100000000000,99999999999999)
         private_key = "pve"+str(hashlib.sha256(str(pve).encode('utf-8')).hexdigest())
@@ -16,7 +16,7 @@ class Address:
                 "pbc":public_key 
             }, 
             "info": {
-                "balance":float(100),
+                "balance":float(0),
                 "assets" : [],
                 "collections" : []
             }
@@ -63,7 +63,7 @@ class Address:
                 return address["address"]["pbc"]
         return "Failed"
     
-    def credit_address(self, public_key = None, amount = None):
+    def credit_wallet(self, public_key = None, amount = None):
         if public_key == None or amount == None:
             return "Failed"
         
