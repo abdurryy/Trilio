@@ -25,7 +25,7 @@
 In order to make the installation much faster and simpler, I've uploaded this project to PyPi and you can simply install it using the  `pip`  command below.
 
 ```
-$ pip install trilio==0.1.3
+$ pip install trilio==0.1.6
 ```
 
 You might also need to pip install these libraries, too.
@@ -33,8 +33,11 @@ You might also need to pip install these libraries, too.
 $ pip install datetime
 $ pip install hashlib
 ```
-
+<h1>Documentation</h1>
+<p>I guarantee you that if you try to understand you will understand. The code examples should <br>explain themselves.</p>
+<h2>## Blockchain</h2>
 <h3>Make your own Blockchain</h3>
+
 ```python
 from trilio import Trilio
 
@@ -42,6 +45,7 @@ blockchain = Trilio()
 ```
 
 <h3>Validate your Blockchain</h3>
+
 ```python
 from trilio import Trilio
 
@@ -49,47 +53,107 @@ blockchain = Trilio()
 valid = blockchain.validate_chain() # True = Valid, False = Invalid
 ```
 
+<h3>Trilio's blockchain attributes</h3>
+<p>These blockchain attributes are already set, but you can change them to whatever you desire.</p>
+
+`
+blockchain.trilio.difficulity = 5
+` # change the mining complexity
+
+`
+blockchain.trilio.name = "MyBlochainName"
+` # change the name of your blockchain
+
+`
+blockchain.trilio.minimum_transactions = 1
+` # minimum transactions for each block
+
+<h2>## Wallet</h2>
 <h3>Create a Wallet</h3>
+
 ```python
 from trilio import Trilio
 
 blockchain = Trilio()
-wallet = blockchain.wallet.create_wallet() # Will return json with wallet information
+wallet = blockchain.Wallet.create_wallet() # Will return json with wallet information
 ```
 
 <h3>Get wallet Keys</h3>
+
 ```python
 from trilio import Trilio
 
 blockchain = Trilio()
-wallet = blockchain.wallet.create_wallet()
+wallet = blockchain.Wallet.create_wallet()
 address = wallet["address"]
 address["pve"] # Private key
 address["pbc"] # Public key
 ```
 
 <h3>Get wallet Attributes</h3>
+
 ```python
-blockchain.wallet.get_balance(private_key=<private_key>, public_key=<public_key>) # Get a wallet's balance
-blockchain.wallet.get_assets(private_key=<private_key>, public_key=<public_key>) # Get a wallet's assets
-blockchain.wallet.get_collections(private_key=<private_key>, public_key=<public_key>) # Get a wallet's collections
+blockchain.Wallet.get_balance(private_key=<private_key>, public_key=<public_key>) # Get a wallet's balance
+blockchain.Wallet.get_assets(private_key=<private_key>, public_key=<public_key>) # Get a wallet's assets
+blockchain.Wallet.get_collections(private_key=<private_key>, public_key=<public_key>) # Get a wallet's collections
+```
+
+<h3>Convert wallet Key</h3>
+
+```python
+blockchain.Wallet.get_public_key(private_key=<private_key>)
+```
+
+<h3>Credit a Wallet</h3>
+
+```python
+blockchain.Wallet.credit_wallet(public_key=<public_key>, amount=<amount>)
+```
+
+<h3>Validate a Wallet</h3>
+
+```python
+blockchain.Wallet.validate_wallet(private_key=<private_key>, public_key=<public_key>) # True = found, False = not found
 ```
 
 
-<h3>Trilio's blockchain attributes</h3>
-<p>These blockchain attributes are already set, but you can change them to whatever you desire.</p>
+<h2>## Transactions</h2>
+<h3>Send tokens to Wallet</h3>
 
-`
-myBlockchain.trilio.difficulity = 5
-` # change the mining complexity
+```python
+blockchain.create_transaction(
+    datetime.now(),
+    data = {
+        "type":"token-transfer",
+        "data":{
+            "to":<public_key>,
+            "from":<private_key>,
+            "amount":<amount>
+        }
+    }
+)
+```
 
-`
-myBlockchain.trilio.name = "MyBlochainName"
-` # change the name of your blockchain
+<h3>Create your Collection</h3>
+<p>Collections are used to sort assets/NFTs to different categories, therefore we can also call collections "categories".</p>
 
-`
-myBlockchain.trilio.minimum_transactions = 1
-` # minimum transactions for each block
+```python
+blockchain.create_transaction(
+    datetime.now(),
+    data = {
+        "type":"contract-actions",
+        "action":"collection-creation",
+        "data":{
+            "name":<collection_name>,
+            "description":<collection_description>,
+            "url":<collection_url>,
+            "icon":<collection_icon>,
+            "tags":<collection_tags>,
+            "signer":<private_key>
+        }
+    }
+)
+```
 
 <h1>Contact me</h1>
 Discord: LocalMOD#3782
