@@ -25,7 +25,7 @@
 In order to make the installation much faster and simpler, I've uploaded this project to PyPi and you can simply install it using the  `pip`  command below.
 
 ```
-$ pip install trilio==0.1.2
+$ pip install trilio==0.1.3
 ```
 
 You might also need to pip install these libraries, too.
@@ -34,44 +34,47 @@ $ pip install datetime
 $ pip install hashlib
 ```
 
-<h3>Validate your own blockchain</h3>
-
-Here is a simple way to create your own blockchain with Trilio and check if the chain is valid, with that we mean whether or not the chain has been compromised. This will return a boolean value such as `True` or `False`, where `True` corresponds to validity.
-
-<p></p>
-
+<h3>Make your own Blockchain</h3>
 ```python
 from trilio import Trilio
 
-# make your own blockchain
-myBlockchain = Trilio()
-
-# check if chain is valid
-IsChainValid = myBlockchain.trilio.validate_chain()
-
-print("Is my chain valid", IsChainValid)
+blockchain = Trilio()
 ```
 
-<h3>Create your first wallet</h3>
-
+<h3>Validate your Blockchain</h3>
 ```python
 from trilio import Trilio
 
-# make your own blockchain
-myBlockchain = Trilio()
-
-# create your own wallet
-myWallet = myBlockchain.Address.create_address()
-
-# wallet
-myWalletAddress = myWallet["address"]
-
-# wallet keys
-myPrivateKey = myWalletAddress["pve"] # pve = private
-myPublicKey = myWalletAddress["pbc"] # pbc = public
-
-print(myPublicKey, myPrivateKey)
+blockchain = Trilio()
+valid = blockchain.validate_chain() # True = Valid, False = Invalid
 ```
+
+<h3>Create a Wallet</h3>
+```python
+from trilio import Trilio
+
+blockchain = Trilio()
+wallet = blockchain.wallet.create_wallet() # Will return json with wallet information
+```
+
+<h3>Get wallet Keys</h3>
+```python
+from trilio import Trilio
+
+blockchain = Trilio()
+wallet = blockchain.wallet.create_wallet()
+address = wallet["address"]
+address["pve"] # Private key
+address["pbc"] # Public key
+```
+
+<h3>Get wallet Attributes</h3>
+```python
+blockchain.wallet.get_balance(private_key=<private_key>, public_key=<public_key>) # Get a wallet's balance
+blockchain.wallet.get_assets(private_key=<private_key>, public_key=<public_key>) # Get a wallet's assets
+blockchain.wallet.get_collections(private_key=<private_key>, public_key=<public_key>) # Get a wallet's collections
+```
+
 
 <h3>Trilio's blockchain attributes</h3>
 <p>These blockchain attributes are already set, but you can change them to whatever you desire.</p>
