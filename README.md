@@ -23,7 +23,7 @@
   - [Requirements](#requirements)
   - [Installation](#installation)
 - [Usage Examples](#usage-examples)
-  - [Blockhain](Blockchain)
+  - [Blockhain](#blockchain)
     - [Async Usage](#async-usage)
   - [Building and Signing Transactions](#building-and-signing-transactions)
     - [Example Using a Wallet](#example-using-a-wallet-recommended)
