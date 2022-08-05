@@ -27,7 +27,6 @@
     - [Validate your Blockchain](#validate-your-Blockchain)
     - [Trilio's blockchain attributes](#Trilios-blockchain-attributes)
   - [Wallet](#wallet)
-    - [Example Using a Wallet](#example-using-a-wallet-recommended)
     - [Create a Wallet](#create-a-wallet)
     - [Get wallet Keys](#get-wallet-keys)
     - [Convert wallet Key](#convert-wallet-key)
