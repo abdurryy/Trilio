@@ -24,6 +24,8 @@
 - [Usage Examples](#usage-examples)
   - [Blockhain](#blockchain)
     - [Make your own Blockchain](#make-your-own-blockchain)
+    - [Validate your Blockchain](#validate-your-Blockchain)
+    - [Trilio's blockchain attributes](#Trilios-blockchain-attributes)
   - [Wallet](#wallet)
     - [Example Using a Wallet](#example-using-a-wallet-recommended)
 
