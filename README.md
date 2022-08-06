@@ -142,6 +142,7 @@ blockchain.Wallet.validate_wallet(private_key=<private_key>, public_key=<public_
 <h3>Send tokens to Wallet</h3>
 
 ```python
+# Need to import datetime
 blockchain.create_transaction(
     datetime.now(),
     data = {
@@ -159,6 +160,7 @@ blockchain.create_transaction(
 <p>Collections are used to sort assets/NFTs to different categories, therefore we can also call collections "categories".</p>
 
 ```python
+# Need to import datetime
 blockchain.create_transaction(
     datetime.now(),
     data = {
