@@ -34,8 +34,11 @@
     - [Validate a Wallet](#validate-a-wallet)
   - [Transactions](#transactions)
     - [Send tokens to Wallet](#send-tokens-to-wallet)
-    - [Send tokens to Wallet](#send-tokens-to-wallet)
+    - [Send trade to Wallet](#send-trade-to-wallet-currently-broken)
+    - [Accept a Trade](#accept-a-tradecurrently-broken)
+    - [Decline a Trade](#decline-a-tradecurrently-broken)
     - [Create your Collection](#create-your-collection)
+    - [Create your Asset](#create-your-asset)
 - [Contact Me](#contact-me)
 - [License](#license)
 
@@ -138,7 +141,6 @@ blockchain.Wallet.credit_wallet(public_key=<public_key>, amount=<amount>)
 blockchain.Wallet.validate_wallet(private_key=<private_key>, public_key=<public_key>) # True = found, False = not found
 ```
 
-
 <h2>Transactions</h2>
 <h3>Send tokens to Wallet</h3>
 
@@ -158,6 +160,7 @@ blockchain.create_transaction(
 ```
 
 <h3>Send trade to Wallet (currently broken)</h3>
+
 ```python
 # Need to import datetime
 blockchain.create_transaction(
@@ -175,6 +178,7 @@ blockchain.create_transaction(
 ```
 
 <h3>Accept a Trade(currently broken)</h3>
+
 ```python
 # Need to import datetime
 blockchain.create_transaction(
@@ -191,6 +195,7 @@ blockchain.create_transaction(
 ```
 
 <h3>Decline a Trade(currently broken)</h3>
+
 ```python
 # Need to import datetime
 blockchain.create_transaction(
