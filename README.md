@@ -34,6 +34,7 @@
     - [Validate a Wallet](#validate-a-wallet)
   - [Transactions](#transactions)
     - [Send tokens to Wallet](#send-tokens-to-wallet)
+    - [Send tokens to Wallet](#send-tokens-to-wallet)
     - [Create your Collection](#create-your-collection)
 - [Contact Me](#contact-me)
 - [License](#license)
@@ -156,6 +157,55 @@ blockchain.create_transaction(
 )
 ```
 
+<h3>Send trade to Wallet (currently broken)</h3>
+```python
+# Need to import datetime
+blockchain.create_transaction(
+    datetime.now(),
+    data={
+        "type":"asset-transfer",
+        "data":{
+            "_to":<public_key_receiver>,
+            "_from":<private_key_sender>,
+            "fassets":[<sending_assets_id>],
+            "tassets":[<receiving_assets_id>]
+        }
+    }
+)
+```
+
+<h3>Accept a Trade(currently broken)</h3>
+```python
+# Need to import datetime
+blockchain.create_transaction(
+    datetime.now(),
+    data={
+        "type":"contract-action",
+        "action":"accept-trade",
+        "data":{
+            "id":<trade_id>,
+            "signer":<private_key>
+        }
+    }
+)
+```
+
+<h3>Decline a Trade(currently broken)</h3>
+```python
+# Need to import datetime
+blockchain.create_transaction(
+    datetime.now(),
+    data={
+        "type":"contract-action",
+        "action":"decline-trade",
+        "data":{
+            "id":<trade_id>,
+            "signer":<private_key>
+        }
+    }
+)
+```
+
 <h3>Create your Collection</h3>
 <p>Collections are used to sort assets/NFTs to different categories, therefore we can also call collections "categories".</p>
 
@@ -178,6 +228,29 @@ blockchain.create_transaction(
 )
 
 #print(blockchain.Wallet.get_collections(private_key=<private_key>, public_key=<public_key>))
+```
+
+<h3>Create your Collection</h3>
+<p>Assets are basically a fancy name for NFTs, you would need a collection owned by you to mint an NFT.</p>
+
+```python
+# Need to import datetime
+blockchain.create_transaction(
+    datetime.now(),
+    data={
+        "type":"contract-action",
+        "action":"asset-creation",
+        "data":{
+            "name":<asset_name>,
+            "description":<asset_description>,
+            "collection_id":<collection_id>,
+            "quantity":<asset_mint_amount>,
+            "signer":<private_key>
+        }
+    }
+)
+
+#print(blockchain.Wallet.get_assets(private_key=<private_key>, public_key=<public_key>))
 ```
 
 <h1>Contact me</h1>
