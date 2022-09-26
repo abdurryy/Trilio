@@ -230,7 +230,7 @@ blockchain.create_transaction(
 #print(blockchain.Wallet.get_collections(private_key=<private_key>, public_key=<public_key>))
 ```
 
-<h3>Create your Collection</h3>
+<h3>Create your Asset</h3>
 <p>Assets are basically a fancy name for NFTs, you would need a collection owned by you to mint an NFT.</p>
 
 ```python
