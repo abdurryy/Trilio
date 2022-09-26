@@ -3,6 +3,8 @@
 </p>
 <i>Even though I don't know much about blockchain technology or how it works at all, I've decided to create my own blockchain with consensus algorithm Proof-of-Stake (PoS). I've lately been working with Solidity and been learning about smart-contract development, and during I found it quite fun and interesting. That is why this has and is a very fun project to work on, and even though it might not be classed as a blockchain I've learned a lot during research and improved my Python skills a lot!</i>
 
+<h3>UPDATE: I see a lot of things I could improve when I revisit this project.</h3>
+
 <i><br>Contributions are highly appreciated.</i>
 
 <h3>Benifits of Trilio</h3>
